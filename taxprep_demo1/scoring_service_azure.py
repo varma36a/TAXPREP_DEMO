@@ -96,7 +96,7 @@ except Exception as e:
 SCORING_PROMPT = """You are a strict JSON-only responder. Given client attributes, output EXACTLY one JSON object with keys:
 - label: "Satisfied" or "Dissatisfied"
 - confidence: number between 0.0 and 1.0
-- top_drivers: list of objects each with { factor, impact, explain } where impact ∈ {"High","Medium","Low"}
+- top_drivers: list of objects each with {{ "factor", "impact", "explain" }} where impact ∈ {{ "High","Medium","Low" }}
 
 REQUIREMENTS:
 1) Return ONLY the JSON object and nothing else (no preface, no explanation, no trailing text, no code fences).
@@ -106,11 +106,12 @@ REQUIREMENTS:
 5) If you cannot determine a value, fill in a safe default:
    - label: "Dissatisfied"
    - confidence: 0.50
-   - top_drivers: [{"factor":"parsing_failure","impact":"High","explain":"insufficient evidence"}]
+   - top_drivers: [{{"factor":"parsing_failure","impact":"High","explain":"insufficient evidence"}}]
 
 Client: {attributes}
 PeerExamples: {examples}
 """
+
 
 # repair suffix used when first parse fails
 REPAIR_SUFFIX = (

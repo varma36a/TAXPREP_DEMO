@@ -1,0 +1,7 @@
+{
+  "n_samples": 100,
+  "accuracy": 0.9,
+  "precision_dissatisfied": 0.9634146341463414,
+  "recall_dissatisfied": 0.9186046511627907,
+  "f1_dissatisfied": 0.9404761904761905
+}
