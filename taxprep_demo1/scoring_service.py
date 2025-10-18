@@ -100,39 +100,6 @@ def call_llms_for_judgement(attributes: dict, examples: List[dict] = None) -> Di
         except Exception as e:
             logger.exception("Azure model call failed: %s", e)
 
-        try:
-            # Anthropic Chat wrapper (AnthropicChat) -- expects ANTHROPIC_API_KEY
-            claude = AnthropicChat(
-                model=os.environ.get("ANTHROPIC_MODEL", "claude-2.1"), temperature=0
-            )
-            claude_resp = claude.generate([{"role": "user", "content": prompt}])
-            claude_text = ""
-            try:
-                claude_text = claude_resp.generations[0][0].text
-            except Exception:
-                try:
-                    claude_text = claude_resp.generations[0].text
-                except Exception:
-                    claude_text = str(claude_resp)
-            responses.append(("claude", claude_text))
-        except Exception as e:
-            logger.exception("Anthropic model call failed: %s", e)
-
-        # Simple adjudication: prefer Azure if available, else Claude; try to parse JSON from responses
-        for name, text in responses:
-            try:
-                parsed = json.loads(text.strip())
-                return parsed
-            except Exception:
-                # try to extract JSON substring
-                import re
-
-                m = re.search(r"\{.*\}", text, re.S)
-                if m:
-                    try:
-                        return json.loads(m.group(0))
-                    except Exception:
-                        continue
         # fallback to heuristics if parsing fails
         return {
             "label": "Dissatisfied",
