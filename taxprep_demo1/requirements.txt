@@ -1,8 +1,24 @@
+# Core
 streamlit
 pandas
 numpy
-python-pptx
+
+# LangChain + providers
+langchain>=0.1.0
+openai>=0.27.0
+anthropic>=0.3.0
+
+# Azure OpenAI support (LangChain uses openai library but azure-identity useful if you use managed identity)
+azure-identity
+azure-core
+
+# Utilities
+python-dotenv
+tenacity
+cachetools
+requests
+
+# Notebook & pptx for docs / deck generation
 nbformat
-langchain
-openai
-anthropic
+python-pptx
+matplotlib
