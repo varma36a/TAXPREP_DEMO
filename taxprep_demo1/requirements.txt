@@ -1,39 +1,34 @@
-# Core app
-streamlit>=1.20
-pandas
-numpy
-
-langchain>=0.0.200
-openai>=1.0.0
-tenacity>=8.2.0
-cachetools>=5.0.0
+# Core app dependencies
+streamlit>=1.20.0
 pandas>=1.5.0
-python-dotenv>=1.0.0
+numpy>=1.21.0
 
-# Notebook / evaluation
-jupyterlab
-scikit-learn
-matplotlib
-seaborn
-openpyxl
-
-# LangChain + OpenAI (LangChain optional)
-langchain
-openai
-
-# Azure SDK (optional — sometimes difficult on M1; use openai SDK for Azure endpoints when in doubt)
-# azure-ai-openai   # optional; uncomment only if you need Microsoft's azure-ai-openai SDK
-
-# Azure Identity (useful if using managed identity)
-azure-identity
-azure-core
+# LangChain & OpenAI (updated for compatibility)
+langchain>=0.0.200
+langchain-openai>=0.0.1
+openai>=1.0.0
 
 # Utilities
-python-dotenv
-tenacity
-cachetools
-requests
+tenacity>=8.2.0
+cachetools>=5.0.0
+python-dotenv>=1.0.0
+requests>=2.28.0
 
-# Notebook & docs
-nbformat
-python-pptx
+# Notebook / evaluation
+jupyterlab>=3.0.0
+scikit-learn>=1.0.0
+matplotlib>=3.5.0
+seaborn>=0.12.0
+openpyxl>=3.0.0
+
+# Azure SDK (optional - use if needed for Azure-specific features)
+# azure-identity>=1.12.0
+# azure-core>=1.26.0
+
+# Documentation & reporting
+nbformat>=5.0.0
+python-pptx>=0.6.21
+
+# Additional utilities for data processing
+tqdm>=4.60.0
+pillow>=9.0.0  # For image processing if needed

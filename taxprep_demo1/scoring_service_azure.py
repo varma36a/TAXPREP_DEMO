@@ -89,33 +89,36 @@ USE_OPENAI_SDK = False
 AzureChatOpenAI = None
 
 try:
-    # Try primary import path
-    from langchain.chat_models import AzureChatOpenAI  # type: ignore
+    # Primary import for langchain>=0.0.200 with langchain-openai
+    from langchain_openai import AzureChatOpenAI  # type: ignore
 
     AzureChatOpenAI = AzureChatOpenAI
     USE_AZURE_LANGCHAIN = True
-    logger.info("LangChain AzureChatOpenAI is available and will be used.")
+    logger.info(
+        "LangChain AzureChatOpenAI (langchain-openai) is available and will be used."
+    )
 except ImportError as e:
-    logger.info("LangChain AzureChatOpenAI not available: %s", e)
-    USE_AZURE_LANGCHAIN = False
-
-    # Try alternative import path for newer versions
+    logger.info("langchain-openai AzureChatOpenAI not available: %s", e)
     try:
-        from langchain_community.chat_models import AzureChatOpenAI  # type: ignore
+        # Fallback to legacy import path
+        from langchain.chat_models import AzureChatOpenAI  # type: ignore
 
         AzureChatOpenAI = AzureChatOpenAI
         USE_AZURE_LANGCHAIN = True
-        logger.info("LangChain Community AzureChatOpenAI is available.")
-    except ImportError:
-        pass
+        logger.info("Legacy LangChain AzureChatOpenAI is available.")
+    except ImportError as e2:
+        logger.info("Legacy LangChain AzureChatOpenAI also not available: %s", e2)
+        USE_AZURE_LANGCHAIN = False
 
-# Fallback to direct OpenAI SDK
+# Fallback to direct OpenAI SDK (openai>=1.0.0)
 if not USE_AZURE_LANGCHAIN:
     try:
         import openai  # type: ignore
 
         USE_OPENAI_SDK = True
-        logger.info("OpenAI SDK is available; will use direct Azure path as fallback.")
+        logger.info(
+            "OpenAI SDK (v1.0+) is available; will use direct Azure path as fallback."
+        )
     except ImportError as e:
         USE_OPENAI_SDK = False
         logger.info("OpenAI SDK not available either: %s", e)
@@ -303,23 +306,38 @@ def _normalize_parsed(parsed: dict) -> dict:
     retry=retry_if_exception_type(Exception),
 )
 def _call_azure_langchain(prompt: str) -> str:
-    logger.debug("TEST1")
+    logger.debug("LangChain Azure call")
 
     if not USE_AZURE_LANGCHAIN:
-        logger.debug("TEST2")
         raise RuntimeError("Azure LangChain not available in this environment")
-    # instantiate and call
+
+    # Get environment variables
     model_name = os.environ.get("AZURE_OPENAI_MODEL", "gpt-4")
-    # instantiate per-call is OK for short demos; could reuse instance globally if preferred
-    llm = AzureChatOpenAI(deployment_name=model_name, temperature=0.0)
-    resp = llm.generate([{"role": "user", "content": prompt}])
+    api_key = os.environ.get("AZURE_OPENAI_API_KEY")
+    endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
+    api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2023-12-01-preview")
+
+    if not api_key or not endpoint:
+        raise RuntimeError("AZURE_OPENAI_API_KEY or AZURE_OPENAI_ENDPOINT not set")
+
     try:
-        return resp.generations[0][0].text
-    except Exception:
-        try:
-            return resp.generations[0].text
-        except Exception:
-            return str(resp)
+        # Configure AzureChatOpenAI
+        llm = AzureChatOpenAI(
+            azure_deployment=model_name,
+            openai_api_version=api_version,
+            azure_endpoint=endpoint,
+            openai_api_key=api_key,
+            temperature=0.0,
+            max_tokens=512,
+        )
+
+        # Use invoke for newer LangChain versions
+        response = llm.invoke([{"role": "user", "content": prompt}])
+        return response.content if response else None
+
+    except Exception as e:
+        logger.error(f"LangChain call failed: {e}")
+        raise
 
 
 @retry(
@@ -330,53 +348,85 @@ def _call_azure_langchain(prompt: str) -> str:
 def _call_openai_direct(prompt: str) -> str:
     import openai
 
-    logger.debug("TEST3")
+    logger.debug("Direct OpenAI SDK call")
 
     api_key = os.environ.get("AZURE_OPENAI_API_KEY")
     api_base = os.environ.get("AZURE_OPENAI_ENDPOINT")
     deployment = os.environ.get("AZURE_OPENAI_MODEL", "gpt-4")
+    api_version = os.environ.get("AZURE_OPENAI_API_VERSION", "2023-12-01-preview")
+
     if not api_key or not api_base:
         raise RuntimeError("AZURE_OPENAI_API_KEY or AZURE_OPENAI_ENDPOINT not set")
-    openai.api_key = api_key
-    openai.api_base = api_base.rstrip("/")
-    openai.api_type = "azure"
-    if os.environ.get("AZURE_OPENAI_API_VERSION"):
-        openai.api_version = os.environ.get("AZURE_OPENAI_API_VERSION")
-    resp = openai.ChatCompletion.create(
-        deployment_id=deployment,
-        model=deployment,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.0,
-        max_tokens=512,
-    )
+
     try:
-        return resp.choices[0].message.content
-    except Exception:
-        return str(resp)
+        # For OpenAI SDK >=1.0.0
+        client = openai.AzureOpenAI(
+            api_key=api_key,
+            api_version=api_version,
+            azure_endpoint=api_base.rstrip("/"),
+        )
+
+        response = client.chat.completions.create(
+            model=deployment,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0,
+            max_tokens=512,
+        )
+        return response.choices[0].message.content
+
+    except Exception as e:
+        logger.error(f"OpenAI direct call failed: {e}")
+        raise
 
 
 # call_and_parse: model call + parse + optional repair retries
 def call_and_parse(prompt_text: str, model_fn, max_retries: int = 2) -> Optional[dict]:
     prompt = prompt_text
     for attempt in range(max_retries + 1):
-        raw = model_fn(prompt)
-        parsed = extract_json_from_text(raw)
-        normalized = _normalize_parsed(parsed) if parsed else None
-        _log_llm("azure", raw, normalized if normalized is not None else parsed)
-        if normalized and isinstance(normalized, dict) and normalized.get("label"):
-            return normalized
-        prompt = prompt + "\n\n" + REPAIR_SUFFIX
+        try:
+            raw = model_fn(prompt)
+            if raw is None:
+                logger.warning(f"Attempt {attempt}: Received None response from model")
+                continue
+
+            parsed = extract_json_from_text(raw)
+            normalized = _normalize_parsed(parsed) if parsed else None
+            _log_llm("azure", raw, normalized if normalized is not None else parsed)
+
+            if normalized and isinstance(normalized, dict) and normalized.get("label"):
+                return normalized
+
+            logger.warning(
+                f"Attempt {attempt}: Failed to parse valid JSON, adding repair suffix"
+            )
+            prompt = prompt + "\n\n" + REPAIR_SUFFIX
+
+        except Exception as e:
+            logger.error(f"Call and parse attempt {attempt} failed: {e}")
+            if attempt == max_retries:
+                break
+            prompt = prompt + "\n\n" + REPAIR_SUFFIX
+
     return None
 
 
 def adjudicate_text_and_return(
     text: str, attributes: dict, model_name: str = "azure"
 ) -> Dict:
+    if text is None:
+        return fallback_response(attributes)
+
     parsed = extract_json_from_text(text)
     parsed_norm = _normalize_parsed(parsed) if parsed else None
     _log_llm(model_name, text, parsed_norm if parsed_norm is not None else parsed)
+
     if parsed_norm and isinstance(parsed_norm, dict) and parsed_norm.get("label"):
         return parsed_norm
+
+    return fallback_response(attributes)
+
+
+def fallback_response(attributes: dict) -> Dict:
     heur = heuristics_score(attributes)
     return {
         "label": heur["label"],
@@ -387,10 +437,7 @@ def adjudicate_text_and_return(
 
 # ---------- main call: calls Azure (LangChain preferred), parses, falls back ----------
 def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> Dict:
-
-    logger.debug(
-        "TEST1",
-    )
+    logger.debug("Starting Azure judgement call")
 
     examples = examples or []
     # Build prompt by concatenation to avoid format-based KeyErrors
@@ -404,11 +451,7 @@ def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> D
 
     # prefer LangChain wrapper
     if USE_AZURE_LANGCHAIN:
-
-        logger.debug(
-            "TEST2",
-        )
-        logger.debug("Using LangChain AzureChatOpenAI for judgement.")
+        logger.debug("Using LangChain AzureChatOpenAI")
         try:
             parsed = call_and_parse(prompt, _call_azure_langchain, max_retries=2)
             if parsed:
@@ -422,11 +465,7 @@ def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> D
 
     # fallback to direct openai SDK
     if USE_OPENAI_SDK:
-
-        logger.debug(
-            "TEST3",
-        )
-        logger.debug("Using openai SDK direct Azure path for judgement.")
+        logger.debug("Using direct OpenAI SDK")
         try:
             parsed = call_and_parse(prompt, _call_openai_direct, max_retries=2)
             if parsed:
@@ -439,13 +478,8 @@ def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> D
             logger.exception("Azure openai direct call failed: %s", e)
 
     # final fallback heuristics
-    heur = heuristics_score(attributes)
-    drivers = mock_llm_judgement(attributes)
-    return {
-        "label": heur["label"],
-        "confidence": heur["confidence"],
-        "top_drivers": drivers,
-    }
+    logger.debug("Using fallback heuristics")
+    return fallback_response(attributes)
 
 
 # ---------- scoring internals with manual cache ----------
@@ -454,11 +488,7 @@ def score_row_internal(r: dict) -> Dict:
         judgement = call_azure_for_judgement(r, examples=[])
     except Exception as e:
         logger.exception("LLM pipeline failed: %s", e)
-        judgement = {
-            "label": heuristics_score(r)["label"],
-            "confidence": heuristics_score(r)["confidence"],
-            "top_drivers": mock_llm_judgement(r),
-        }
+        judgement = fallback_response(r)
 
     label = judgement.get("label") if isinstance(judgement, dict) else None
     confidence = judgement.get("confidence") if isinstance(judgement, dict) else None
@@ -511,5 +541,5 @@ def score_batch(df) -> List[Dict]:
     results = []
     for _, r in df.iterrows():
         results.append(score_row(r))
-        time.sleep(0.05)
+        time.sleep(0.05)  # Rate limiting
     return results
