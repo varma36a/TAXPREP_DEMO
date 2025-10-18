@@ -8,6 +8,8 @@ import hashlib
 import ast
 from typing import List, Dict, Optional
 from pathlib import Path
+import logging
+
 
 from tenacity import (
     retry,
@@ -17,19 +19,17 @@ from tenacity import (
 )
 from cachetools import TTLCache
 
+
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-# ensure logs folder exists
-LOG_DIR = Path("./logs")
-LOG_DIR.mkdir(parents=True, exist_ok=True)
-LLM_LOG_FILE = LOG_DIR / "llm_responses.log"
-
+logger.setLevel(logging.DEBUG)
 
 # ---------------------------
 # Heuristics fallback & mock
 # ---------------------------
 def heuristics_score(row: dict) -> Dict:
+
+    logger.debug("THIS IS TEST")
+
     score = 0.5
     sla_days = 7
     if row.get("turnaround_time_days", 0) > sla_days + 3:
@@ -287,6 +287,9 @@ def _normalize_parsed(parsed: dict) -> dict:
     retry=retry_if_exception_type(Exception),
 )
 def _call_azure_langchain(prompt: str) -> str:
+
+    logging.info("✅ Process started successfully.")
+
     model_name = os.environ.get("AZURE_OPENAI_MODEL", "gpt-4")
     azure = AzureChatOpenAI(deployment_name=model_name, temperature=0.0)
     resp = azure.generate([{"role": "user", "content": prompt}])

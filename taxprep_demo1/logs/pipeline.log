@@ -1,0 +1,451 @@
+2025-10-18 14:35:22,053 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5102492432", inode=30206749, flags=11900, id=30253068): is_coalesced, is_created, is_file, is_modified, is_renamed
+2025-10-18 14:35:22,053 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc", inode=30206749, flags=10800, id=30253069): is_file, is_renamed
+2025-10-18 14:35:22,053 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc", inode=30205885, flags=10800, id=30253070): is_file, is_renamed
+2025-10-18 14:35:22,053 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/logs/pipeline.log", inode=30206750, flags=10100, id=30253073): is_created, is_file
+2025-10-18 14:35:22,053 [DEBUG] fsevents:101 — queue_event FileCreatedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5102492432', dest_path='', event_type='created', is_directory=False, is_synthetic=False)
+2025-10-18 14:35:22,053 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:35:22,053 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5102492432', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:35:22,054 [DEBUG] fsevents:242 — Destination event for rename is NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc", inode=30206749, flags=10800, id=30253069)
+2025-10-18 14:35:22,054 [DEBUG] fsevents:101 — queue_event FileMovedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5102492432', dest_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc', event_type='moved', is_directory=False, is_synthetic=False)
+2025-10-18 14:35:22,054 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:35:22,055 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:35:22,055 [DEBUG] fsevents:101 — queue_event FileDeletedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc', dest_path='', event_type='deleted', is_directory=False, is_synthetic=False)
+2025-10-18 14:35:22,055 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:35:22,055 [DEBUG] fsevents:101 — queue_event FileCreatedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/logs/pipeline.log', dest_path='', event_type='created', is_directory=False, is_synthetic=False)
+2025-10-18 14:35:22,055 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/logs', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:35:32,552 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,608 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,662 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,716 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,772 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,827 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,882 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,938 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:32,993 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,049 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,104 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,159 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,215 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,268 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,324 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,377 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,432 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,488 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,542 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,594 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,649 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,704 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,760 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,815 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,870 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,924 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:33,976 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,032 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,087 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,143 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,198 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,251 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,306 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,362 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,416 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,471 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,524 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,579 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,632 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,688 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,742 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,793 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,849 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,902 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:34,954 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,010 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,066 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,120 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,174 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,227 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,284 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,338 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,391 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,443 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,501 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,553 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,608 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,664 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,720 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,776 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,830 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,884 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,936 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:35,992 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,048 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,103 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,159 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,216 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,269 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,325 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,378 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,434 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,486 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,540 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,596 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,651 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,707 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,762 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,818 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,873 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,924 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:36,981 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,033 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,089 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,140 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,196 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,247 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,301 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,356 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,411 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,466 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,522 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,578 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,631 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,686 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,740 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,792 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,847 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,901 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:37,957 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,009 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,065 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,116 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,172 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,227 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,283 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,338 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,394 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,452 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,508 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,559 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,610 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,666 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,717 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,773 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,827 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,882 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,937 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:38,993 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,048 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,102 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,158 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,211 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,264 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,318 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,373 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,428 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,483 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,539 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,594 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,650 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,705 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,759 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,814 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,870 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,926 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:39,981 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,037 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,093 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,144 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,196 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,252 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,307 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,363 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,419 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,474 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,528 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,583 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,639 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,691 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,743 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,796 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,849 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,903 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:40,959 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,010 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,062 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,117 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,173 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,226 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,282 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,337 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,393 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,448 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,504 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,560 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,615 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,669 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,725 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,780 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,833 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,888 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,941 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:41,997 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,053 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,107 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,163 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,218 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,273 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,328 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,383 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,438 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,494 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,549 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,605 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,660 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,715 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,771 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,826 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,882 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,937 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:42,993 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,045 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,100 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,155 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,210 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,261 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,315 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,370 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:35:43,426 [DEBUG] scoring_service_azure:39 — THIS IS TEST
+2025-10-18 14:36:02,795 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30257408): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:02,795 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:02,942 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30257461): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:02,942 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:03,413 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30257505): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:03,413 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:03,718 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30257514): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:03,718 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:30,484 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258085): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:30,485 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:30,695 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258110): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:30,695 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:30,960 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258139): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:30,960 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:31,220 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258145): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:31,220 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:31,479 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258154): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:31,479 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:31,787 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258172): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:31,787 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:32,040 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py", inode=29908165, flags=11400, id=30258178): is_file, is_inode_meta_mod, is_modified
+2025-10-18 14:36:32,040 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/scoring_service_azure.py', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:34,927 [INFO] scoring_service_azure:85 — LangChain AzureChatOpenAI not available: No module named 'langchain'
+2025-10-18 14:36:34,928 [INFO] scoring_service_azure:92 — openai SDK not available: No module named 'openai'
+2025-10-18 14:36:34,964 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5121795184", inode=30207085, flags=11900, id=30258505): is_coalesced, is_created, is_file, is_modified, is_renamed
+2025-10-18 14:36:34,965 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc", inode=30207085, flags=10800, id=30258506): is_file, is_renamed
+2025-10-18 14:36:34,965 [DEBUG] fsevents:171 — NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc", inode=30206749, flags=10800, id=30258507): is_file, is_renamed
+2025-10-18 14:36:34,965 [DEBUG] fsevents:101 — queue_event FileCreatedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5121795184', dest_path='', event_type='created', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:34,966 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:36:34,966 [DEBUG] fsevents:101 — queue_event FileModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5121795184', dest_path='', event_type='modified', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:34,966 [DEBUG] fsevents:242 — Destination event for rename is NativeEvent(path="/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc", inode=30207085, flags=10800, id=30258506)
+2025-10-18 14:36:34,966 [DEBUG] fsevents:101 — queue_event FileMovedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc.5121795184', dest_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc', event_type='moved', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:34,966 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:36:34,967 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:36:34,967 [DEBUG] fsevents:101 — queue_event FileDeletedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__/scoring_service_azure.cpython-312.pyc', dest_path='', event_type='deleted', is_directory=False, is_synthetic=False)
+2025-10-18 14:36:34,967 [DEBUG] fsevents:101 — queue_event DirModifiedEvent(src_path='/Users/RohithGVMac/AIML_Pravartak/TAXPREP_DEMO/taxprep_demo1/__pycache__', dest_path='', event_type='modified', is_directory=True, is_synthetic=False)
+2025-10-18 14:36:48,386 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,440 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,496 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,550 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,604 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,660 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,715 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,775 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,831 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,887 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,940 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:48,995 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,049 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,104 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,158 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,212 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,268 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,319 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,373 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,428 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,481 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,536 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,591 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,645 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,697 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,753 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,808 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,863 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,919 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:49,974 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,030 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,085 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,140 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,195 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,251 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,306 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,362 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,413 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,464 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,520 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,576 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,630 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,686 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,741 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,797 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,853 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,907 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:50,962 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,017 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,071 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,127 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,180 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,231 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,286 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,342 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,397 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,453 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,509 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,563 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,615 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,671 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,727 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,782 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,838 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,893 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:51,948 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,004 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,059 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,115 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,169 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,223 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,276 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,330 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,384 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,442 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,494 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,554 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,609 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,665 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,720 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,775 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,830 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,886 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,942 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:52,997 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,050 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,104 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,156 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,212 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,264 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,319 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,375 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,429 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,485 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,540 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,595 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,648 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,703 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,755 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,811 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,866 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,920 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:53,973 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,028 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,084 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,140 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,195 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,251 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,306 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,362 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,414 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,469 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,522 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,574 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,630 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,683 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,739 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,795 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,850 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,905 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:54,961 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,015 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,070 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,125 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,181 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,236 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,292 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,348 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,404 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,459 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,515 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,573 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,630 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,682 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,738 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,794 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,847 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,902 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:55,958 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,013 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,069 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,125 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,180 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,231 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,291 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,347 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,402 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,458 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,513 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,569 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,624 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,680 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,735 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,790 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,847 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,904 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:56,957 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,013 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,067 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,124 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,179 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,231 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,286 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,342 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,397 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,448 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,503 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,558 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,609 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,665 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,720 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,776 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,831 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,886 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,939 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:57,995 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,048 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,101 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,157 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,212 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,268 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,323 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,378 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,430 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,486 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,543 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,598 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,649 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,705 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,757 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,813 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,865 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,916 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:58,974 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:59,030 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:59,084 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:59,140 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:59,196 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:59,251 [DEBUG] scoring_service_azure:31 — THIS IS TEST
+2025-10-18 14:36:59,306 [DEBUG] scoring_service_azure:31 — THIS IS TEST

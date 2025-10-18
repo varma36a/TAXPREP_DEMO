@@ -5,6 +5,27 @@ import pandas as pd
 import json
 from data_utils import load_or_generate_sample
 from scoring_service_azure import score_batch
+# put this at top of app.py or run in notebook before imports
+
+import logging
+from pathlib import Path
+
+# ensure logs folder
+Path("logs").mkdir(parents=True, exist_ok=True)
+
+LOG_FORMAT = "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d — %(message)s"
+logging.basicConfig(
+    level=logging.DEBUG,  # show DEBUG and above
+    format=LOG_FORMAT,
+    handlers=[
+        logging.StreamHandler(),  # console
+        logging.FileHandler("logs/pipeline.log", encoding="utf-8"),  # file
+    ],
+)
+# optionally reduce noise from third-party libs
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.getLogger("openai").setLevel(logging.INFO)
+
 
 # Load .env (if present)
 load_dotenv()
