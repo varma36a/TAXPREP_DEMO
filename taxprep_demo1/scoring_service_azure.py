@@ -81,7 +81,6 @@ def mock_llm_judgement(row: dict) -> List[Dict]:
         )
     return drivers
 
-
 # ---------------------------
 # Azure OpenAI: LangChain or openai direct fallback
 # ---------------------------
@@ -90,23 +89,36 @@ USE_OPENAI_SDK = False
 AzureChatOpenAI = None
 
 try:
+    # Try primary import path
     from langchain.chat_models import AzureChatOpenAI  # type: ignore
 
     AzureChatOpenAI = AzureChatOpenAI
     USE_AZURE_LANGCHAIN = True
     logger.info("LangChain AzureChatOpenAI is available and will be used.")
-except Exception as e:
+except ImportError as e:
     logger.info("LangChain AzureChatOpenAI not available: %s", e)
     USE_AZURE_LANGCHAIN = False
-    # try openai sdk as fallback
+
+    # Try alternative import path for newer versions
+    try:
+        from langchain_community.chat_models import AzureChatOpenAI  # type: ignore
+
+        AzureChatOpenAI = AzureChatOpenAI
+        USE_AZURE_LANGCHAIN = True
+        logger.info("LangChain Community AzureChatOpenAI is available.")
+    except ImportError:
+        pass
+
+# Fallback to direct OpenAI SDK
+if not USE_AZURE_LANGCHAIN:
     try:
         import openai  # type: ignore
 
         USE_OPENAI_SDK = True
-        logger.info("openai SDK is available; will use direct Azure path as fallback.")
-    except Exception as e2:
+        logger.info("OpenAI SDK is available; will use direct Azure path as fallback.")
+    except ImportError as e:
         USE_OPENAI_SDK = False
-        logger.info("openai SDK not available either: %s", e2)
+        logger.info("OpenAI SDK not available either: %s", e)
 
 
 # Very explicit prompt instructions (no placeholders to avoid format KeyErrors)
