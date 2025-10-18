@@ -8,8 +8,6 @@ import hashlib
 import ast
 from typing import List, Dict, Optional
 from pathlib import Path
-import logging
-
 
 from tenacity import (
     retry,
@@ -19,17 +17,30 @@ from tenacity import (
 )
 from cachetools import TTLCache
 
+# ----------------------------
+# Logging + log file setup
+# ----------------------------
+LOG_DIR = Path("./logs")
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+LLM_LOG_FILE = LOG_DIR / "llm_responses.log"
 
 logger = logging.getLogger(__name__)
+if not logger.handlers:
+    # ensure at least a console handler for local runs (avoid duplicate handlers)
+    ch = logging.StreamHandler()
+    ch.setFormatter(
+        logging.Formatter(
+            "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d — %(message)s"
+        )
+    )
+    logger.addHandler(ch)
 logger.setLevel(logging.DEBUG)
+
 
 # ---------------------------
 # Heuristics fallback & mock
 # ---------------------------
 def heuristics_score(row: dict) -> Dict:
-
-    logger.debug("THIS IS TEST")
-
     score = 0.5
     sla_days = 7
     if row.get("turnaround_time_days", 0) > sla_days + 3:
@@ -76,51 +87,51 @@ def mock_llm_judgement(row: dict) -> List[Dict]:
 # ---------------------------
 USE_AZURE_LANGCHAIN = False
 USE_OPENAI_SDK = False
-try:
-    from langchain.chat_models import AzureChatOpenAI
+AzureChatOpenAI = None
 
+try:
+    from langchain.chat_models import AzureChatOpenAI  # type: ignore
+
+    AzureChatOpenAI = AzureChatOpenAI
     USE_AZURE_LANGCHAIN = True
-    logger.info("LangChain AzureChatOpenAI available")
+    logger.info("LangChain AzureChatOpenAI is available and will be used.")
 except Exception as e:
     logger.info("LangChain AzureChatOpenAI not available: %s", e)
+    USE_AZURE_LANGCHAIN = False
+    # try openai sdk as fallback
     try:
-        import openai  # fallback
+        import openai  # type: ignore
 
         USE_OPENAI_SDK = True
-        logger.info("openai SDK available (will use direct Azure path)")
+        logger.info("openai SDK is available; will use direct Azure path as fallback.")
     except Exception as e2:
-        logger.info("openai SDK not available: %s", e2)
         USE_OPENAI_SDK = False
-
-# Very explicit prompt asking for strict JSON
-SCORING_PROMPT = """You are a strict JSON-only responder. Given client attributes, output EXACTLY one JSON object with keys:
-- label: "Satisfied" or "Dissatisfied"
-- confidence: number between 0.0 and 1.0
-- top_drivers: list of objects each with {{ "factor", "impact", "explain" }} where impact ∈ {{ "High","Medium","Low" }}
-
-REQUIREMENTS:
-1) Return ONLY the JSON object and nothing else (no preface, no explanation, no trailing text, no code fences).
-2) Use double quotes for all strings.
-3) confidence must be numeric (e.g., 0.82). If you calculate a percent, convert to 0-1 scale.
-4) top_drivers must be a JSON array (even if empty).
-5) If you cannot determine a value, fill in a safe default:
-   - label: "Dissatisfied"
-   - confidence: 0.50
-   - top_drivers: [{{"factor":"parsing_failure","impact":"High","explain":"insufficient evidence"}}]
-
-Client: {attributes}
-PeerExamples: {examples}
-"""
+        logger.info("openai SDK not available either: %s", e2)
 
 
-# repair suffix used when first parse fails
-REPAIR_SUFFIX = (
-    "REPAIR: Your previous output was not valid JSON. Return ONLY valid JSON that matches the schema: "
-    '{"label":"Satisfied|Dissatisfied","confidence":0.0-1.0,"top_drivers":[{"factor":"...","impact":"High|Medium|Low","explain":"..."}] }.'
+# Very explicit prompt instructions (no placeholders to avoid format KeyErrors)
+SCORING_PROMPT_INSTRUCTIONS = (
+    "You are a strict JSON-only responder. Given client attributes, output EXACTLY one JSON object with keys:\n"
+    '- label: "Satisfied" or "Dissatisfied"\n'
+    "- confidence: number between 0.0 and 1.0\n"
+    '- top_drivers: list of objects each with {"factor","impact","explain"} where impact ∈ {"High","Medium","Low"}\n\n'
+    "REQUIREMENTS:\n"
+    "1) Return ONLY the JSON object and nothing else (no preface, no explanation, no trailing text, no code fences).\n"
+    "2) Use double quotes for all strings.\n"
+    "3) confidence must be numeric (e.g., 0.82). If you calculate a percent, convert to 0-1 scale.\n"
+    "4) top_drivers must be a JSON array (even if empty).\n"
+    "5) If you cannot determine a value, fill in a safe default:\n"
+    '   - label: "Dissatisfied"\n'
+    "   - confidence: 0.50\n"
+    '   - top_drivers: [{"factor":"parsing_failure","impact":"High","explain":"insufficient evidence"}]\n\n'
 )
 
+REPAIR_SUFFIX = (
+    "REPAIR: Your previous output was not valid JSON. Return ONLY valid JSON that matches the schema: "
+    '{"label":"Satisfied|Dissatisfied","confidence":0.0-1.0,"top_drivers":[{"factor":"...","impact":"High|Medium|Low","explain":"..."}]}'
+)
 
-# ---------- caching: manual TTL cache keyed by client_id or row-hash ----------
+# ---------- caching ----------
 CACHE_TTL_SECONDS = 60 * 5
 _cache = TTLCache(maxsize=2000, ttl=CACHE_TTL_SECONDS)
 
@@ -207,11 +218,9 @@ def extract_json_from_text(text: str) -> Optional[dict]:
 
     # 3) full-text attempts: strip code fences and try again
     cleaned = text.strip()
-    # remove triple backticks if present
     cleaned = re.sub(
         r"^```.*?```$", lambda m: m.group(0).strip("`"), cleaned, flags=re.S
     )
-    # try replacing single quotes
     try:
         parsed = json.loads(cleaned.replace("'", '"'))
         if isinstance(parsed, dict):
@@ -223,31 +232,26 @@ def extract_json_from_text(text: str) -> Optional[dict]:
 
 
 def _normalize_parsed(parsed: dict) -> dict:
-    """
-    Normalize keys (strip whitespace, surrounding quotes) and coerce types
-    """
     if not isinstance(parsed, dict):
         return parsed
 
     normalized = {}
     for k, v in parsed.items():
         nk = k.strip()
-        # remove surrounding quotes if present in key string
         if (nk.startswith('"') and nk.endswith('"')) or (
             nk.startswith("'") and nk.endswith("'")
         ):
             nk = nk[1:-1].strip()
-        nk = nk.strip()
         normalized[nk] = v
 
-    # normalize label to str
+    # label
     if "label" in normalized and normalized["label"] is not None:
         try:
             normalized["label"] = str(normalized["label"]).strip().strip('"').strip("'")
         except Exception:
             pass
 
-    # normalize confidence to float between 0-1
+    # confidence
     if "confidence" in normalized:
         conf = normalized.get("confidence")
         try:
@@ -258,7 +262,7 @@ def _normalize_parsed(parsed: dict) -> dict:
         except Exception:
             normalized["confidence"] = None
 
-    # normalize top_drivers into list of dicts
+    # top_drivers
     if "top_drivers" in normalized:
         td = normalized.get("top_drivers")
         if isinstance(td, str):
@@ -280,19 +284,23 @@ def _normalize_parsed(parsed: dict) -> dict:
     return normalized
 
 
-# ---------- Azure call wrappers with retries ----------
+# ---------- Azure/ LangChain call wrappers ----------
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(min=1, max=6),
     retry=retry_if_exception_type(Exception),
 )
 def _call_azure_langchain(prompt: str) -> str:
+    logger.debug("TEST1")
 
-    logging.info("✅ Process started successfully.")
-
+    if not USE_AZURE_LANGCHAIN:
+        logger.debug("TEST2")
+        raise RuntimeError("Azure LangChain not available in this environment")
+    # instantiate and call
     model_name = os.environ.get("AZURE_OPENAI_MODEL", "gpt-4")
-    azure = AzureChatOpenAI(deployment_name=model_name, temperature=0.0)
-    resp = azure.generate([{"role": "user", "content": prompt}])
+    # instantiate per-call is OK for short demos; could reuse instance globally if preferred
+    llm = AzureChatOpenAI(deployment_name=model_name, temperature=0.0)
+    resp = llm.generate([{"role": "user", "content": prompt}])
     try:
         return resp.generations[0][0].text
     except Exception:
@@ -308,8 +316,9 @@ def _call_azure_langchain(prompt: str) -> str:
     retry=retry_if_exception_type(Exception),
 )
 def _call_openai_direct(prompt: str) -> str:
-    # expects AZURE_OPENAI_API_KEY and AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_MODEL
     import openai
+
+    logger.debug("TEST3")
 
     api_key = os.environ.get("AZURE_OPENAI_API_KEY")
     api_base = os.environ.get("AZURE_OPENAI_ENDPOINT")
@@ -329,7 +338,6 @@ def _call_openai_direct(prompt: str) -> str:
         max_tokens=512,
     )
     try:
-        # newer openai returns message.content
         return resp.choices[0].message.content
     except Exception:
         return str(resp)
@@ -345,12 +353,10 @@ def call_and_parse(prompt_text: str, model_fn, max_retries: int = 2) -> Optional
         _log_llm("azure", raw, normalized if normalized is not None else parsed)
         if normalized and isinstance(normalized, dict) and normalized.get("label"):
             return normalized
-        # append repair instruction and retry
         prompt = prompt + "\n\n" + REPAIR_SUFFIX
     return None
 
 
-# adjudicate final text
 def adjudicate_text_and_return(
     text: str, attributes: dict, model_name: str = "azure"
 ) -> Dict:
@@ -359,7 +365,6 @@ def adjudicate_text_and_return(
     _log_llm(model_name, text, parsed_norm if parsed_norm is not None else parsed)
     if parsed_norm and isinstance(parsed_norm, dict) and parsed_norm.get("label"):
         return parsed_norm
-    # fallback to heuristics
     heur = heuristics_score(attributes)
     return {
         "label": heur["label"],
@@ -368,27 +373,48 @@ def adjudicate_text_and_return(
     }
 
 
-# ---------- main call: calls Azure, parses, falls back ----------
+# ---------- main call: calls Azure (LangChain preferred), parses, falls back ----------
 def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> Dict:
-    examples = examples or []
-    prompt = SCORING_PROMPT.format(
-        attributes=json.dumps(attributes), examples=json.dumps(examples)
+
+    logger.debug(
+        "TEST1",
     )
+
+    examples = examples or []
+    # Build prompt by concatenation to avoid format-based KeyErrors
+    prompt = (
+        SCORING_PROMPT_INSTRUCTIONS
+        + "\nClient: "
+        + json.dumps(attributes)
+        + "\nPeerExamples: "
+        + json.dumps(examples)
+    )
+
     # prefer LangChain wrapper
     if USE_AZURE_LANGCHAIN:
+
+        logger.debug(
+            "TEST2",
+        )
+        logger.debug("Using LangChain AzureChatOpenAI for judgement.")
         try:
             parsed = call_and_parse(prompt, _call_azure_langchain, max_retries=2)
             if parsed:
                 return parsed
-            # if parsing failed but raw returned, fall back to parsing raw run
             raw = _call_azure_langchain(prompt + "\n\n" + REPAIR_SUFFIX)
             return adjudicate_text_and_return(
                 raw, attributes, model_name="azure_langchain"
             )
         except Exception as e:
             logger.exception("Azure LangChain call failed: %s", e)
+
     # fallback to direct openai SDK
     if USE_OPENAI_SDK:
+
+        logger.debug(
+            "TEST3",
+        )
+        logger.debug("Using openai SDK direct Azure path for judgement.")
         try:
             parsed = call_and_parse(prompt, _call_openai_direct, max_retries=2)
             if parsed:
@@ -399,6 +425,7 @@ def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> D
             )
         except Exception as e:
             logger.exception("Azure openai direct call failed: %s", e)
+
     # final fallback heuristics
     heur = heuristics_score(attributes)
     drivers = mock_llm_judgement(attributes)
@@ -411,7 +438,6 @@ def call_azure_for_judgement(attributes: dict, examples: List[dict] = None) -> D
 
 # ---------- scoring internals with manual cache ----------
 def score_row_internal(r: dict) -> Dict:
-    # call the LLM pipeline
     try:
         judgement = call_azure_for_judgement(r, examples=[])
     except Exception as e:
@@ -422,7 +448,6 @@ def score_row_internal(r: dict) -> Dict:
             "top_drivers": mock_llm_judgement(r),
         }
 
-    # normalize and provide safe defaults
     label = judgement.get("label") if isinstance(judgement, dict) else None
     confidence = judgement.get("confidence") if isinstance(judgement, dict) else None
     top_drivers = judgement.get("top_drivers") if isinstance(judgement, dict) else None
@@ -435,7 +460,6 @@ def score_row_internal(r: dict) -> Dict:
     if top_drivers is None:
         top_drivers = mock_llm_judgement(r)
 
-    # ensure top_drivers serializable
     try:
         td_json = json.dumps(top_drivers)
     except Exception:
@@ -459,12 +483,8 @@ def score_row(row) -> Dict:
     except Exception:
         r = dict(row)
 
-    # cache key: prefer client_id, else hash of row
     cid = r.get("client_id")
-    if cid:
-        cache_key = f"client:{cid}"
-    else:
-        cache_key = f"row:{_row_to_hash_key(r)}"
+    cache_key = f"client:{cid}" if cid else f"row:{_row_to_hash_key(r)}"
 
     cached_val = _cache_get(cache_key)
     if cached_val is not None:

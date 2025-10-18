@@ -1,21 +1,23 @@
-# Core
-streamlit
+# Core app
+streamlit>=1.20
 pandas
 numpy
 
-#notebook
+# Notebook / evaluation
 jupyterlab
 scikit-learn
 matplotlib
 seaborn
-openpyxl  
+openpyxl
 
-# LangChain + providers
-langchain>=0.1.0
-openai>=0.27.0
-anthropic>=0.3.0
+# LangChain + OpenAI (LangChain optional)
+langchain
+openai
 
-# Azure OpenAI support (LangChain uses openai library but azure-identity useful if you use managed identity)
+# Azure SDK (optional — sometimes difficult on M1; use openai SDK for Azure endpoints when in doubt)
+# azure-ai-openai   # optional; uncomment only if you need Microsoft's azure-ai-openai SDK
+
+# Azure Identity (useful if using managed identity)
 azure-identity
 azure-core
 
@@ -25,7 +27,6 @@ tenacity
 cachetools
 requests
 
-# Notebook & pptx for docs / deck generation
+# Notebook & docs
 nbformat
 python-pptx
-matplotlib
